@@ -1,0 +1,22 @@
+.legend {
+    grid-area: sidebar;
+    border-right: 1px solid black;
+    padding: 0.25rem;
+    overflow-y: auto;
+}
+
+.legend ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.legend li {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: brown;
+}
+
+.legend span {
+    font-weight: bold;
+    color: black;
+}

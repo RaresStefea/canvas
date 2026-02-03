@@ -1,0 +1,48 @@
+.options {
+    grid-area: footer;
+    background-color: lightgray;
+    border-top: 2px solid #ccc;
+    padding: 0.75rem;
+}
+
+.options fieldset {
+    background-color: white;
+    border: 1px solid slategray;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; 
+}
+
+.options legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: #333;
+}
+
+.group-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 1rem;
+    flex: 1 1 200px;
+}
+
+#add-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    flex: 1 1 120px;
+    max-width: 300px; 
+    text-align: center;
+}
+
+#add-btn:hover {
+    background-color: lime;
+}

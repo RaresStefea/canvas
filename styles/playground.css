@@ -1,0 +1,6 @@
+.playground {
+    grid-area: play; 
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}

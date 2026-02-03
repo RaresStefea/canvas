@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapes</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <main class="app-container">
+        <aside class="legend">
+            <ul>
+                <li>Width: <span id="width-val">0</span></li>
+                <li>Height: <span id="height-val">0</span></li>
+                <li>Color: <span id="color-val"> none</span></li>
+                <li>Mouse Position: <span id="mouse-val">0, 0</span></li>
+                <li>Element ID/Class: <span id="id-val">none,none</span></li>
+                <li>No. of active elements: <span id="count-val">0</span></li>
+            </ul>
+        </aside>
+
+        <div class="playground">
+            </div>
+
+        <footer class="options">
+            <fieldset>
+                <legend>Please select your options:</legend>
+                
+                <div class="group-wrapper">
+                    <label for="shapes">Choose a shape:</label>
+                    <select name="shapes" id="shapes">
+                        <option value="square">Square</option>
+                        <option value="triangle">Triangle</option>
+                        <option value="circle">Circle</option>
+                        <option value="oval">Oval</option>
+                    </select>
+                </div>
+                
+                <div class="group-wrapper">
+                    <span class="label">Collision:</span>
+                    <input type="radio" name="collision" id="on" value="on" checked />
+                    <label for="on">On</label>
+
+                    <input type="radio" name="collision" id="off" value="off"/>
+                    <label for="off">Off</label>
+                </div>
+
+                <div class="group-wrapper">
+                    <button id="add-btn">Add Shape</button>
+                </div>
+            </fieldset>
+        </footer>
+    </main>
+    <script type="module" src="./backend/index.js"></script>
+</body>
+</html>
