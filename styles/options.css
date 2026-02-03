@@ -46,3 +46,19 @@
 #add-btn:hover {
     background-color: lime;
 }
+
+.options select,
+.options input[type="number"]{
+    padding: 0.25px;
+    border: 1px solid gainsboro;
+    border-radius: 4px;
+}
+
+input[type="color"]{
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+}

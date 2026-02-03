@@ -29,24 +29,39 @@ export class App {
         
         return { w: this.canvas.width, h: this.canvas.height };
     }
+    addShape(type, customColor, customSize, collisionMode) {
+    let newShape;
+    let isOverlapping = false;
+    let attempts = 0;
+    const maxAttempts = (collisionMode === 'on') ? 50 : 1;
 
-    addShape(type) {
-        const x = Math.random() * (this.canvas.width - 60) + 30; 
-        const y = Math.random() * (this.canvas.height - 60) + 30;
-        
-        const color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+    do {
+        const color = customColor;
 
-        let newShape;
+        let x, y;
 
         if (type === 'circle') {
-            newShape = new Circle(x, y, color, 30); 
+        const r = customSize / 2;
+        x = Math.random() * (this.canvas.width - 2 * r) + r;   
+        y = Math.random() * (this.canvas.height - 2 * r) + r; 
+        newShape = new Circle(x, y, color, r);
         } else {
-            newShape = new Square(x, y, color, 60); 
+        x = Math.random() * (this.canvas.width - customSize);   
+        y = Math.random() * (this.canvas.height - customSize); 
+        newShape = new Square(x, y, color, customSize);
         }
 
+        isOverlapping = (collisionMode === 'on') ? this.checkSpawnCollision(newShape) : false;
+        attempts++;
+    } while (isOverlapping && attempts < maxAttempts);
+
+    if (!isOverlapping) {
         this.shapes.push(newShape);
-        
-        return this.shapes.length; 
+    } else {
+        console.warn("Can't find space for a new shape!!");
+    }
+
+    return this.shapes.length;
     }
 
     animate() {
@@ -59,4 +74,22 @@ export class App {
 
         requestAnimationFrame(() => this.animate());
     }
+    checkSpawnCollision(newItem) {
+        return this.shapes.some(existingItem => {
+            const r1 = newItem.type === 'circle' ? newItem.radius : newItem.size / 2;
+            const r2 = existingItem.type === 'circle' ? existingItem.radius : existingItem.size / 2;
+
+            const x1 = newItem.type === 'circle' ? newItem.x : newItem.x + r1;
+            const y1 = newItem.type === 'circle' ? newItem.y : newItem.y + r1;
+
+            const x2 = existingItem.type === 'circle' ? existingItem.x : existingItem.x + r2;
+            const y2 = existingItem.type === 'circle' ? existingItem.y : existingItem.y + r2;
+
+            const dx = x1 - x2;
+            const dy = y1 - y2;
+            const distance = Math.hypot(dx, dy);
+
+            return distance < (r1 + r2);
+  });
+}
 }

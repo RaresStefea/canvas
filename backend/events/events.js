@@ -9,12 +9,26 @@ export function initListeners(app) {
         
         addBtn: document.getElementById('add-btn'),
         shapeSelect: document.getElementById('shapes'),
+        colorPicker: document.getElementById('color-picker'),
+        sizeInput: document.getElementById('size-input'),
+        getCollisionState: () =>
+        document.querySelector('input[name="collision"]:checked')?.value || 'off'
     };
 
     ui.addBtn.addEventListener('click', () => {
         const type = ui.shapeSelect.value;
-        const count = app.addShape(type);
-        ui.count.innerText = count;
+        const color= ui.colorPicker.value;
+        const size = parseInt(ui.sizeInput.value);
+        
+        
+        const collisionMode = ui.getCollisionState();
+
+
+
+        const count = app.addShape(type,color,size,collisionMode);
+
+        
+        if(ui.count)ui.count.innerText = count;
     });
 
     document.addEventListener('mousemove', (event) => {
