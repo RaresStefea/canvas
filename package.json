@@ -1,0 +1,12 @@
+{
+  "name": "canvas-main",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "esbuild backend/index.ts --bundle --outfile=dist/bundle.js --format=esm --sourcemap",
+    "watch": "esbuild backend/index.ts --bundle --outfile=dist/bundle.js --format=esm --sourcemap --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.18.19"
+  }
+}

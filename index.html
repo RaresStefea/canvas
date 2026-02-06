@@ -1,67 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shapes</title>
     <link rel="stylesheet" href="./styles/index.css">
 </head>
+
 <body>
-    <main class="app-container">
-        <aside class="legend">
+    <main class="app-container" aria-label="Shape playground application">
+
+        <aside class="legend" aria-labelledby="legend-title">
+            <h2 id="legend-title" class="visually-hidden">Shape information</h2>
             <ul>
-                <li>Width: <span id="width-val">0</span></li>
-                <li>Height: <span id="height-val">0</span></li>
-                <li>Color: <span id="color-val"> none</span></li>
-                <li>Mouse Position: <span id="mouse-val">0, 0</span></li>
-                <li>Element ID/Class: <span id="id-val">none,none</span></li>
-                <li>No. of active elements: <span id="count-val">0</span></li>
+                <li>Width: <span id="width-val" role="status" aria-live="polite">0</span></li>
+                <li>Height: <span id="height-val" role="status" aria-live="polite">0</span></li>
+                <li>Color: <span id="color-val" role="status" aria-live="polite">none</span></li>
+                <li>Mouse Position: <span id="mouse-val" role="status" aria-live="polite">0, 0</span></li>
+                <li>Element ID/Class: <span id="id-val" role="status" aria-live="polite">none, none</span></li>
+                <li>No. of active elements: <span id="count-val" role="status" aria-live="polite">0</span></li>
             </ul>
         </aside>
 
-        <div class="playground">
-            </div>
+        <div class="playground" aria-label="Interactive shape canvas" role="application">
+        </div>
 
-        <footer class="options">
+        <footer class="options" aria-labelledby="options-title">
             <fieldset>
                 <legend>Please select your options:</legend>
-                
+
                 <div class="group-wrapper">
                     <label for="shapes">Choose a shape:</label>
-                    <select name="shapes" id="shapes">
+                    <select name="shapes" id="shapes" aria-label="Select shape type">
                         <option value="square">Square</option>
                         <option value="triangle">Triangle</option>
                         <option value="circle">Circle</option>
                         <option value="oval">Oval</option>
                     </select>
                 </div>
-                
 
                 <div class="group-wrapper">
                     <label for="color-picker">Color:</label>
-                    <input type="color" id="color-picker" value="#2020FF" />
+                    <input type="color" id="color-picker" value="#2020FF" aria-label="Pick shape color" />
                 </div>
 
                 <div class="group-wrapper">
-                    <label for="size-input">Size in px:</label>
-                    <input type="number" id="size-input" value="50" min="10" max="200" step="5"/>
+                    <label for="size-input">Size in pixels:</label>
+                    <input type="number" id="size-input" value="50" min="10" max="200" step="5"
+                        aria-label="Set shape size in pixels" />
                 </div>
 
-                <div class="group-wrapper">
-                    <span class="label">Collision:</span>
+                <div class="group-wrapper" role="radiogroup" aria-labelledby="collision-label">
+                    <span class="label" id="collision-label">Collision:</span>
+
                     <input type="radio" name="collision" id="on" value="on" checked />
                     <label for="on">On</label>
 
-                    <input type="radio" name="collision" id="off" value="off"/>
+                    <input type="radio" name="collision" id="off" value="off" />
                     <label for="off">Off</label>
                 </div>
 
                 <div class="group-wrapper">
-                    <button id="add-btn">Add Shape</button>
+                    <button id="add-btn" aria-label="Add a new shape to the playground">
+                        Add Shape
+                    </button>
                 </div>
             </fieldset>
         </footer>
     </main>
-    <script type="module" src="./backend/index.js"></script>
+
+    <script type="module" src="./dist/bundle.js"></script>
 </body>
+
 </html>
